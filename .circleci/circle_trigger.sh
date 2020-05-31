@@ -6,6 +6,7 @@ set -e
 ROOT="." 
 REPOSITORY_TYPE="github"
 CIRCLE_API="https://circleci.com/api"
+CIRCLE_DATA=${CIRCLE_TOKEN}
 
 ############################################
 ## 1. Commit SHA of last CI build
@@ -14,7 +15,6 @@ LAST_COMPLETED_BUILD_URL="${CIRCLE_API}/v1.1/project/${REPOSITORY_TYPE}/${CIRCLE
 curl -Ss -u ${CIRCLE_TOKEN}: ${LAST_COMPLETED_BUILD_URL} > circle.json
 LAST_COMPLETED_BUILD_SHA=`cat circle.json | jq -r 'map(select(.status == "success") | select(.workflows.workflow_name != "ci")) | .[0]["vcs_revision"]'`
 
-CIRCLE_DATA = ${CIRCLE_TOKEN}
 
 echo "ALEX TEST"
 echo "$CIRCLE_DATA"
