@@ -14,7 +14,10 @@ LAST_COMPLETED_BUILD_URL="${CIRCLE_API}/v1.1/project/${REPOSITORY_TYPE}/${CIRCLE
 curl -Ss -u ${CIRCLE_TOKEN}: ${LAST_COMPLETED_BUILD_URL} > circle.json
 LAST_COMPLETED_BUILD_SHA=`cat circle.json | jq -r 'map(select(.status == "success") | select(.workflows.workflow_name != "ci")) | .[0]["vcs_revision"]'`
 
+CIRCLE_DATA = ${CIRCLE_TOKEN}
+
 echo "ALEX TEST"
+echo "$CIRCLE_DATA"
 echo "$LAST_COMPLETED_BUILD_URL"
 echo "ALEX TEST 0"
 echo "$LAST_COMPLETED_BUILD_SHA"
