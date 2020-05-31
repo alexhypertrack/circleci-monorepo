@@ -19,6 +19,8 @@ echo "$LAST_COMPLETED_BUILD_URL"
 echo "ALEX TEST 0"
 echo "$LAST_COMPLETED_BUILD_SHA"
 echo "ALEX TEST 1"
+echo "$CIRCLE_TOKEN"
+echo "ALEX TEST 2"
 
 if  [[ ${LAST_COMPLETED_BUILD_SHA} == "null" ]] || [[ $(git cat-file -t $LAST_COMPLETED_BUILD_SHA) != "commit" ]]; then
   echo -e "\e[93mThere are no completed CI builds in branch ${CIRCLE_BRANCH}.\e[0m"
